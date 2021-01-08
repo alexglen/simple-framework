@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="virtual-dom.js"></script>
+    <script>
+      const app = document.getElementById('app');
+      const node = h('h1', { class: 'title' }, 'Привет');
+      const node2 = h('div', { class: 'active' }, [
+        h('h1', null, 'Заголовок'),
+        h('img', {
+          src:
+            'https://tamlife.ru/uploads/2019/02/978.db7475b2cb28032ceb784376846b265e-380x280.jpg',
+        }),
+      ]);
+
+      const node3 = h('footer', { class: 'passive' }, [
+        h('h1', null, 'Заголовок'),
+        h('input', {
+          value:
+            'https://tamlife.ru/uploads/2019/02/978.db7475b2cb28032ceb784376846b265e-380x280.jpg',
+        }),
+      ]);
+
+      mount(node2, app);
+      patch(node2, node3);
+    </script>
+  </body>
+</html>
