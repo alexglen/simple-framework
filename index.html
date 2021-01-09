@@ -9,7 +9,8 @@
   <body>
     <div id="app"></div>
     <script src="virtual-dom.js"></script>
-    <script>
+    <script src="reactivity.js"></script>
+    <!-- <script>
       const app = document.getElementById('app');
       const node = h('h1', { class: 'title' }, 'Привет');
       const node2 = h('div', { class: 'active' }, [
@@ -22,6 +23,7 @@
 
       const node3 = h('footer', { class: 'passive' }, [
         h('h1', null, 'Заголовок'),
+        h('h1', null, 'Заголовок2'),
         h('input', {
           value:
             'https://tamlife.ru/uploads/2019/02/978.db7475b2cb28032ceb784376846b265e-380x280.jpg',
@@ -30,6 +32,21 @@
 
       mount(node2, app);
       patch(node2, node3);
+    </script> -->
+    <script>
+      const state = reactive({
+        name: 'Sasha',
+        age: 30,
+      });
+
+      const el = document.createElement('h1');
+      document.body.append(el);
+
+      watchEffect(() => {
+        setInterval(() => {
+          el.textContent += 1;
+        }, 2000);
+      });
     </script>
   </body>
 </html>
